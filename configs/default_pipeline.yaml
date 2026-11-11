@@ -1,0 +1,66 @@
+# PITCHMIND — Default Pipeline Configuration (Phase 0 Baseline)
+# Note: Quality thresholds and readiness criteria are proposed design candidates
+# that require empirical calibration and validation against ground truth.
+
+pipeline:
+  name: "pitchmind_default"
+  version: "0.1.0"
+  description: "End-to-end video-first football tactical intelligence pipeline"
+
+video_preflight:
+  max_decode_resolution: [1920, 1080]
+  sample_frame_rate_hz: 10.0
+  min_clip_duration_seconds: 5.0
+  supported_containers: ["mp4", "mov", "mkv"]
+
+quality_assessment_candidates:
+  # Proposed 9-D candidate thresholds requiring validation
+  min_pitch_coverage_fraction: 0.40
+  min_visible_players_count: 14
+  max_calibration_reprojection_error_m: 1.5
+  min_detection_confidence: 0.45
+  min_identity_continuity_seconds: 3.0
+  min_blur_laplacian_variance: 100.0
+
+canonical_grid:
+  sampling_rate_hz: 10.0
+  pitch_standard:
+    length_metres: 105.0
+    width_metres: 68.0
+    origin: "center"  # x in [-52.5, 52.5], y in [-34.0, 34.0]
+  coordinate_normalization:
+    possession_attacks_positive_x: true
+    preserve_raw_coordinates: true
+
+feature_engine:
+  kinematics:
+    smoothing_window_frames: 5
+    velocity_method: "savitzky_golay"
+  team_geometry:
+    rolling_window_seconds: 5.0
+    rolling_stride_seconds: 1.0
+  interaction_graph:
+    max_edge_distance_m: 15.0
+    include_ball_node: true
+
+analytical_modules:
+  pressuregraph:
+    enabled: true
+    baseline_type: "xgboost"
+    candidate_radius_m: 15.0
+    closing_speed_threshold_mps: 3.5
+  tactical_shift:
+    enabled: true
+    baseline_type: "pelt"
+    segment_window_seconds: 30.0
+    penalty: "l2"
+  roleshift:
+    enabled: true
+    clustering_method: "kmeans"
+    min_match_minutes: 15.0
+  scan2play:
+    enabled: false  # Conditional gate: disabled until pose coverage is verified
+    min_crop_size_px: 80
+    min_joint_confidence: 0.70
+    reception_pre_window_seconds: 2.0
+

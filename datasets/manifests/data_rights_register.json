@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "document_title": "PITCHMIND Data Rights and Permissions Register",
+  "last_updated": "2026-11-11T01:00:00Z",
+  "governing_policy": "Rights-Based Video Footage & Open Research Data Framework (ADR 002)",
+  "entries": [
+    {
+      "id": "dataset-skillcorner-opendata",
+      "name": "SkillCorner Open Data (10 A-League Matches)",
+      "category": "tracking_data",
+      "source_url": "https://github.com/SkillCorner/opendata",
+      "license": "MIT",
+      "license_verified": true,
+      "permitted_use": "Internal research, canonical adapter development, feature engineering, and model training.",
+      "redistribution_allowed": false,
+      "attribution_required": true,
+      "attribution_text": "Data provided by SkillCorner under MIT License. Open Data initiative.",
+      "sampling_rate_hz": 10,
+      "notes": "10 Hz broadcast-derived tracking; includes detected and extrapolated flags."
+    },
+    {
+      "id": "dataset-idsse-bundesliga",
+      "name": "IDSSE Tracking and Event Dataset",
+      "category": "tracking_data",
+      "source_url": "https://huggingface.co/datasets/pysport/idsse-data",
+      "license": "CC-BY-4.0",
+      "license_verified": true,
+      "permitted_use": "Cross-provider transfer evaluation (Ablation E7) and coordinate normalization testing.",
+      "redistribution_allowed": false,
+      "attribution_required": true,
+      "attribution_text": "IDSSE Dataset provided under Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "sampling_rate_hz": 25,
+      "notes": "25 FPS optical tracking downsampled to 10 Hz canonical analytical grid."
+    },
+    {
+      "id": "dataset-metrica-sample",
+      "name": "Metrica Sports Sample Tracking Data",
+      "category": "tracking_data",
+      "source_url": "https://github.com/metrica-sports/sample-data",
+      "license": "Unverified (Attribution requested in README)",
+      "license_verified": false,
+      "permitted_use": "Sanity checks for coordinate normalization, adapter unit tests, and replay prototyping.",
+      "redistribution_allowed": false,
+      "attribution_required": true,
+      "attribution_text": "Sample data courtesy of Metrica Sports.",
+      "sampling_rate_hz": 25,
+      "notes": "No LICENSE file confirmed in repository root. Redistribution strictly prohibited without explicit license."
+    },
+    {
+      "id": "dataset-soccernet-tracking",
+      "name": "SoccerNet Multi-Object Tracking Benchmark",
+      "category": "video_and_annotations",
+      "source_url": "https://www.soccer-net.org/tasks/tracking",
+      "license": "Academic Benchmark Terms (Devkit code unverified at root)",
+      "license_verified": false,
+      "permitted_use": "Computer-vision detection and multi-object tracking benchmarking (HOTA metric).",
+      "redistribution_allowed": false,
+      "attribution_required": true,
+      "attribution_text": "SoccerNet Tracking Benchmark, SoccerNet Association.",
+      "sampling_rate_hz": 25,
+      "notes": "Access governed by SoccerNet benchmark challenge conditions."
+    },
+    {
+      "id": "dataset-soccernet-gar",
+      "name": "SoccerNet Group Activity Recognition (GAR)",
+      "category": "video_and_annotations",
+      "source_url": "https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR",
+      "license": "CC-BY-NC-4.0",
+      "license_verified": true,
+      "permitted_use": "Optional group activity baseline comparison.",
+      "redistribution_allowed": false,
+      "attribution_required": true,
+      "attribution_text": "SoccerNet-GAR under Creative Commons Attribution-NonCommercial 4.0 International.",
+      "sampling_rate_hz": 25,
+      "notes": "Strict non-commercial restriction. Cannot be used for commercial product deployment."
+    },
+    {
+      "id": "dataset-skillcorner-bodypose",
+      "name": "SkillCorner Open Data Body Pose (Pilot)",
+      "category": "pose_data",
+      "source_url": "https://huggingface.co/datasets/SkillCorner/opendata-bodypose",
+      "license": "MIT",
+      "license_verified": true,
+      "permitted_use": "SCAN2PLAY feasibility pilot and pre-reception orientation proxy research.",
+      "redistribution_allowed": false,
+      "attribution_required": true,
+      "attribution_text": "SkillCorner Body Pose Open Data under MIT License.",
+      "sampling_rate_hz": 25,
+      "notes": "Initial two-match pilot release; 29 joints; pose present only for detected players."
+    }
+  ]
+}
+

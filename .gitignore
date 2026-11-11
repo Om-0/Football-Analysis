@@ -1,0 +1,104 @@
+# PITCHMIND — .gitignore
+# Purpose: keep raw footage, generated artifacts, caches and model outputs
+# out of version control.
+# Governing rules: Engineering Rule 10 (keep raw videos, generated frames
+# and model outputs separate) and Rule 12 (never commit restricted datasets
+# or private video).
+
+# ---------------------------------------------------------------------------
+# Raw footage and user uploads
+# ---------------------------------------------------------------------------
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+*.m4v
+*.ts
+uploads/                 # user-uploaded match footage
+data/raw/
+datasets/raw/
+
+# ---------------------------------------------------------------------------
+# Extracted frames and intermediate video artifacts
+# (scoped to directories — do NOT ignore images project-wide, docs may
+# contain legitimate diagrams)
+# ---------------------------------------------------------------------------
+frames/
+frames_raw/
+frames_sampled/
+frames_calib/
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.tiff
+
+# ---------------------------------------------------------------------------
+# Model outputs, checkpoints and experiment runs
+# ---------------------------------------------------------------------------
+outputs/
+models/
+checkpoints/
+weights/
+runs/
+mlruns/                  # MLflow tracking artifacts
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.tflite
+
+# ---------------------------------------------------------------------------
+# Caches and generated data
+# ---------------------------------------------------------------------------
+artifacts/
+cache/
+.caches/
+*.cache
+*.db                     # SQLite runtime state (data, not code)
+*.duckdb                 # DuckDB analytics database (data, not code)
+*.parquet                # canonical tracking data + analytics outputs
+features/                # cached extracted features
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------------------
+# Editor / OS
+# ---------------------------------------------------------------------------
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Frontend build outputs & dependencies
+# ---------------------------------------------------------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+.turbo/
+
+# ---------------------------------------------------------------------------
+# Environment secrets (Engineering Rule 11 — never expose API keys)
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+

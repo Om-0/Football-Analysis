@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pitchmind"
+version = "0.1.0"
+description = "Football Tactical Intelligence and Player Behaviour Analysis Platform"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "PITCHMIND contributors" }]
+keywords = ["football", "soccer", "computer-vision", "tactical-analysis", "tracking"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Vision",
+]
+
+# Dependency policy:
+# - This file declares NO third-party dependencies at Phase 0.
+# - Dependencies are added per-phase as they are benchmarked and approved,
+#   never in bulk. See docs/TECHNICAL_DECISIONS.md.
+# - Computer-vision dependencies (YOLOX, ByteTrack, OpenCV) are deferred
+#   until Phase 4 and are gated on hardware benchmarking (RTX 3050 / 4 GB
+#   VRAM). They are NOT installed during Phase 0.
+
+[project.optional-dependencies]
+# Intentionally empty at Phase 0. Add groups as phases begin:
+# cv       = []   # OpenCV, detector, tracker (Phase 4)
+# ml       = []   # PyTorch, scikit-learn, XGBoost (Phase 9)
+# web      = []   # FastAPI, Pydantic (Phase 13)
+# data     = []   # DuckDB, pandas, pyarrow, polars (Phase 7)
+# dev      = []   # pytest, ruff, mypy (testing tooling)
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
